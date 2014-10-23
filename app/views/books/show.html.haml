@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @book.name
+%p
+  %b Image:
+  = @book.image
+%p
+  %b Timestamp:
+  = @book.timeStamp
+%p
+  %b Author:
+  = @book.author
+%p
+  %b Description:
+  = @book.description
+%p
+  %b Ebook state:
+  = @book.ebook_state
+%p
+  %b Isnewebooks:
+  = @book.isNewEbooks
+%p
+  %b Statelike:
+  = @book.stateLike
+%p
+  %b Isvip:
+  = @book.isVip
+%p
+  %b Urldownload:
+  = @book.urlDownload
+%p
+  %b Urlsavelocal:
+  = @book.urlSaveLocal
+
+= link_to 'Edit', edit_book_path(@book)
+\|
+= link_to 'Back', books_path
