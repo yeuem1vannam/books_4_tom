@@ -1,1 +1,1 @@
-= link_to(book.confirmed.to_s, book_path(book, book: { confirmed: !book.confirmed }), data: { method: :put, remote: true }, class: "btn btn-#{book.confirmed ? :success : :warning} btn-xs")
+= link_to(book.confirmed.to_s, book_path(book, book: { confirmed: !book.confirmed }), data: { method: :put, remote: true, "disable-with" => "Requesting" }, class: "btn btn-#{book.confirmed ? :success : :warning} btn-xs")
