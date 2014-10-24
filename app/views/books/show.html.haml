@@ -1,39 +1,49 @@
-%p#notice= notice
+- model_class = Book
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
 
 %p
-  %b Name:
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
   = @book.name
 %p
-  %b Image:
+  %strong= model_class.human_attribute_name(:image) + ':'
+  %br
   = @book.image
 %p
-  %b Timestamp:
+  %strong= model_class.human_attribute_name(:timeStamp) + ':'
+  %br
   = @book.timeStamp
 %p
-  %b Author:
+  %strong= model_class.human_attribute_name(:author) + ':'
+  %br
   = @book.author
 %p
-  %b Description:
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
   = @book.description
 %p
-  %b Ebook state:
+  %strong= model_class.human_attribute_name(:ebook_state) + ':'
+  %br
   = @book.ebook_state
 %p
-  %b Isnewebooks:
+  %strong= model_class.human_attribute_name(:isNewEbooks) + ':'
+  %br
   = @book.isNewEbooks
 %p
-  %b Statelike:
+  %strong= model_class.human_attribute_name(:stateLike) + ':'
+  %br
   = @book.stateLike
 %p
-  %b Isvip:
+  %strong= model_class.human_attribute_name(:isVip) + ':'
+  %br
   = @book.isVip
 %p
-  %b Urldownload:
+  %strong= model_class.human_attribute_name(:urlDownload) + ':'
+  %br
   = @book.urlDownload
-%p
-  %b Urlsavelocal:
-  = @book.urlSaveLocal
 
-= link_to 'Edit', edit_book_path(@book)
-\|
-= link_to 'Back', books_path
+
+= link_to t('.back', :default => t("helpers.links.back")), books_path, :class => 'btn btn-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_book_path(@book), :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), book_path(@book), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

@@ -1,43 +1,53 @@
-= form_for @book do |f|
-  - if @book.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
-      %ul
-        - @book.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :image
-    = f.text_field :image
-  .field
-    = f.label :timeStamp
-    = f.text_field :timeStamp
-  .field
-    = f.label :author
-    = f.text_field :author
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :ebook_state
-    = f.text_field :ebook_state
-  .field
-    = f.label :isNewEbooks
-    = f.text_field :isNewEbooks
-  .field
-    = f.label :stateLike
-    = f.text_field :stateLike
-  .field
-    = f.label :isVip
-    = f.text_field :isVip
-  .field
-    = f.label :urlDownload
-    = f.text_field :urlDownload
-  .field
-    = f.label :urlSaveLocal
-    = f.text_field :urlSaveLocal
-  .actions
-    = f.submit 'Save'
+= form_for @book, html: { class: "form form-horizontal book" } do |f|
+  .form-group
+    = f.label :name, class: 'control-label'
+    .controls
+      = f.text_field :name, class: 'form-control', required: true
+    = error_span(@book[:name])
+  .form-group
+    = f.label :image, class: 'control-label'
+    .controls
+      = f.text_field :image, class: 'form-control', required: true
+    = error_span(@book[:image])
+  .form-group
+    = f.label :timeStamp, class: 'control-label'
+    .controls
+      = f.text_field :timeStamp, class: 'form-control', required: true
+    = error_span(@book[:timeStamp])
+  .form-group
+    = f.label :author, class: 'control-label'
+    .controls
+      = f.text_field :author, class: 'form-control', required: true
+    = error_span(@book[:author])
+  .form-group
+    = f.label :description, class: 'control-label'
+    .controls
+      = f.text_field :description, class: 'form-control', required: true
+    = error_span(@book[:description])
+  .form-group
+    = f.label :ebook_state, class: 'control-label'
+    .controls
+      = f.text_field :ebook_state, class: 'form-control', required: true
+    = error_span(@book[:ebook_state])
+  .form-group
+    = f.label :isNewEbooks, class: 'control-label'
+    .controls
+      = f.text_field :isNewEbooks, class: 'form-control', required: true
+    = error_span(@book[:isNewEbooks])
+  .form-group
+    = f.label :stateLike, class: 'control-label'
+    .controls
+      = f.text_field :stateLike, class: 'form-control', required: true
+    = error_span(@book[:stateLike])
+  .form-group
+    = f.label :isVip, class: 'control-label'
+    .controls
+      = f.text_field :isVip, class: 'form-control', required: true
+    = error_span(@book[:isVip])
+  .form-group
+    = f.label :urlDownload, class: 'control-label'
+    .controls
+      = f.text_field :urlDownload, class: 'form-control', required: true
+    = error_span(@book[:urlDownload])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), books_path, :class => 'btn btn-default'

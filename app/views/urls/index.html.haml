@@ -1,0 +1,21 @@
+%h1 Listing urls
+
+%table
+  %tr
+    %th Href
+    %th Status
+    %th
+    %th
+    %th
+
+  - @urls.each do |url|
+    %tr
+      %td= url.href
+      %td= url.status
+      %td= link_to 'Show', url
+      %td= link_to 'Edit', edit_url_path(url)
+      %td= link_to 'Destroy', url, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New URL', new_url_path
