@@ -1,16 +1,13 @@
-= form_for @url do |f|
-  - if @url.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@url.errors.count, "error")} prohibited this url from being saved:"
-      %ul
-        - @url.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :href
-    = f.text_field :href
-  .field
-    = f.label :status
-    = f.text_field :status
-  .actions
-    = f.submit 'Save'
+= form_for @url, html: { class: "form form-horizontal url" } do |f|
+  .form-group
+    = f.label :href, class: 'control-label'
+    .controls
+      = f.text_field :href, class: 'form-control', required: true
+    = error_span(@url[:href])
+  .form-group
+    = f.label :fetchable, class: 'control-label'
+    .controls
+      = f.text_field :fetchable, class: 'form-control', required: true
+    = error_span(@url[:fetchable])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), urls_path, :class => 'btn btn-default'

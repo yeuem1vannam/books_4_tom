@@ -49,5 +49,15 @@
     .controls
       = f.text_field :urlDownload, class: 'form-control', required: true
     = error_span(@book[:urlDownload])
+  .form-group
+    = f.label :content, class: 'control-label'
+    .controls
+      = f.text_field :content, class: 'form-control', required: true
+    = error_span(@book[:content])
+  .form-group
+    = f.label :book_url_id, class: 'control-label'
+    .controls
+      = f.text_field :book_url_id, class: 'form-control', required: true
+    = error_span(@book[:book_url_id])
   = f.submit nil,class: 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), books_path, :class => 'btn btn-default'

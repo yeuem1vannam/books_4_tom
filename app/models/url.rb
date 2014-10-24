@@ -1,10 +1,7 @@
-class URL
+class Url
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :href,    type: String
-  field :status,  type: Boolean
-  field :kind,    type: String
-
-  has_one :book, -> { where(kind: :book) }
+  field :href,      type: String
+  field :fetchable, type: Boolean
 end

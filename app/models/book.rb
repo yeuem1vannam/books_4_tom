@@ -12,4 +12,13 @@ class Book
   field :stateLike,     type: Boolean,  default: false
   field :isVip,         type: Boolean,  default: false
   field :urlDownload,   type: String,   default: ""
+  field :content,       type: String
+
+  belongs_to :book_url, dependent: :nullify
+  after_save :revoke_url
+
+  private
+  def revoke_url
+    self.book_url.update_attributes(fetchable: false)
+  end
 end

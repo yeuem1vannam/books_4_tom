@@ -15,6 +15,8 @@
       %th= model_class.human_attribute_name(:stateLike)
       %th= model_class.human_attribute_name(:isVip)
       %th= model_class.human_attribute_name(:urlDownload)
+      %th= model_class.human_attribute_name(:content)
+      %th= model_class.human_attribute_name(:book_url_id)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -31,6 +33,8 @@
         %td= book.stateLike
         %td= book.isVip
         %td= book.urlDownload
+        %td= book.content
+        %td= book.book_url_id
         %td=l book.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_book_path(book), :class => 'btn btn-default btn-xs'

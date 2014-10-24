@@ -3,7 +3,7 @@ class UrlsController < ApplicationController
 
   # GET /urls
   def index
-    @urls = URL.all
+    @urls = Url.all
   end
 
   # GET /urls/1
@@ -12,7 +12,7 @@ class UrlsController < ApplicationController
 
   # GET /urls/new
   def new
-    @url = URL.new
+    @url = Url.new
   end
 
   # GET /urls/1/edit
@@ -21,10 +21,10 @@ class UrlsController < ApplicationController
 
   # POST /urls
   def create
-    @url = URL.new(url_params)
+    @url = Url.new(url_params)
 
     if @url.save
-      redirect_to @url, notice: 'URL was successfully created.'
+      redirect_to @url, notice: 'Url was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class UrlsController < ApplicationController
   # PATCH/PUT /urls/1
   def update
     if @url.update(url_params)
-      redirect_to @url, notice: 'URL was successfully updated.'
+      redirect_to @url, notice: 'Url was successfully updated.'
     else
       render :edit
     end
@@ -42,17 +42,17 @@ class UrlsController < ApplicationController
   # DELETE /urls/1
   def destroy
     @url.destroy
-    redirect_to urls_url, notice: 'URL was successfully destroyed.'
+    redirect_to urls_url, notice: 'Url was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_url
-      @url = URL.find(params[:id])
+      @url = Url.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def url_params
-      params.require(:url).permit(:href, :status)
+      params[:url]
     end
 end
