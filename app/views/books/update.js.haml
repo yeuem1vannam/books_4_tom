@@ -1,0 +1,2 @@
+:plain
+  $('td#' + "#{@book.id}").html("#{escape_javascript(render partial: "book_confirm", locals: { book: @book }) }");

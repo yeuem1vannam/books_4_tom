@@ -29,20 +29,20 @@
     .controls
       = f.text_field :ebook_state, class: 'form-control', required: true
     = error_span(@book[:ebook_state])
-  .form-group
-    = f.label :isNewEbooks, class: 'control-label'
-    .controls
-      = f.text_field :isNewEbooks, class: 'form-control', required: true
+  .checkbox
+    = f.label :isNewEbooks, class: 'control-label' do
+      = f.check_box :isNewEbooks, required: true
+      isNewEbooks
     = error_span(@book[:isNewEbooks])
-  .form-group
-    = f.label :stateLike, class: 'control-label'
-    .controls
-      = f.text_field :stateLike, class: 'form-control', required: true
+  .checkbox
+    = f.label :stateLike, class: 'control-label' do
+      = f.check_box :stateLike, required: true
+      stateLike
     = error_span(@book[:stateLike])
-  .form-group
-    = f.label :isVip, class: 'control-label'
-    .controls
-      = f.text_field :isVip, class: 'form-control', required: true
+  .checkbox
+    = f.label :isVip do
+      = f.check_box :isVip, required: true
+      isVip
     = error_span(@book[:isVip])
   .form-group
     = f.label :urlDownload, class: 'control-label'
@@ -50,14 +50,20 @@
       = f.text_field :urlDownload, class: 'form-control', required: true
     = error_span(@book[:urlDownload])
   .form-group
+    = f.label :urlSaveLocal, class: 'control-label'
+    .controls
+      = f.text_field :urlSaveLocal, class: 'form-control', required: true
+    = error_span(@book[:urlSaveLocal])
+  .checkbox
+    = f.label :confirmed, class: 'control-label' do
+      = f.check_box :confirmed, required: true
+      Confirmed
+    = error_span(@book[:confirmed])
+  .form-group
     = f.label :content, class: 'control-label'
     .controls
       = f.text_field :content, class: 'form-control', required: true
     = error_span(@book[:content])
-  .form-group
-    = f.label :book_url_id, class: 'control-label'
-    .controls
-      = f.text_field :book_url_id, class: 'form-control', required: true
-    = error_span(@book[:book_url_id])
+
   = f.submit nil,class: 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), books_path, :class => 'btn btn-default'
