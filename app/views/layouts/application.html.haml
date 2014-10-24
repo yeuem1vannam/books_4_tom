@@ -24,23 +24,13 @@
         %a.navbar-brand(href="#") MedicalEbooks
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+            %li= link_to "Category URL", urls_path(type: CategoryUrl.name)
+            %li= link_to "Book URL", urls_path(type: BookUrl.name)
+            %li= link_to "Book", books_path
 
     .container
       .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+        = bootstrap_flash
+        = yield
       %footer
-        %p &copy; Company 2014
+        %p 2014 &copy; Phuong 'J' Le H.

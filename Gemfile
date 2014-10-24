@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'mechanize'
 gem 'delayed_job_mongoid'
+gem 'kaminari'
 gem 'pry', group: [:development]
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'

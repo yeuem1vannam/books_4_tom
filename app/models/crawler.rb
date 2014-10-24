@@ -62,11 +62,11 @@ class Crawler
     content = page.search("//div[@class='entry entry-content']/*")
       .map(&:text).map(&:strip)
     delim_index = content.index { |c| c =~ /.*?download.*?/ }
-    content = content.take(delim_index)
+    content = content.take(delim_index) if delim_index
     book.content = content
     book.description = content.find { |text| text.length > 200 }
     author_marker = content.index { |c| c =~ /by\s+/ }
-    book.author = content[author_marker].gsub(/by\s+/, '')
+    book.author = content[author_marker].gsub(/by\s+/, '') if author_marker
     book.save
   rescue => e
     @agent.log.error(e)

@@ -1,6 +1,8 @@
 - model_class = Book
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  = page_entries_info @books
+= paginate(@books)
 %table.table.table-striped
   %thead
     %tr
@@ -10,14 +12,6 @@
       %th= model_class.human_attribute_name(:timeStamp)
       %th= model_class.human_attribute_name(:author)
       %th= model_class.human_attribute_name(:description)
-      %th= model_class.human_attribute_name(:ebook_state)
-      %th= model_class.human_attribute_name(:isNewEbooks)
-      %th= model_class.human_attribute_name(:stateLike)
-      %th= model_class.human_attribute_name(:isVip)
-      %th= model_class.human_attribute_name(:urlDownload)
-      %th= model_class.human_attribute_name(:content)
-      %th= model_class.human_attribute_name(:book_url_id)
-      %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @books.each do |book|
@@ -28,16 +22,7 @@
         %td= book.timeStamp
         %td= book.author
         %td= book.description
-        %td= book.ebook_state
-        %td= book.isNewEbooks
-        %td= book.stateLike
-        %td= book.isVip
-        %td= book.urlDownload
-        %td= book.content
-        %td= book.book_url_id
-        %td=l book.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_book_path(book), :class => 'btn btn-default btn-xs'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), book_path(book), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_book_path, :class => 'btn btn-primary'
+= paginate(@books)

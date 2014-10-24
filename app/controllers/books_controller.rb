@@ -3,31 +3,15 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all
+    @books = Book.page(params[:page]).per(10)
   end
 
   # GET /books/1
   def show
   end
 
-  # GET /books/new
-  def new
-    @book = Book.new
-  end
-
   # GET /books/1/edit
   def edit
-  end
-
-  # POST /books
-  def create
-    @book = Book.new(book_params)
-
-    if @book.save
-      redirect_to @book, notice: 'Book was successfully created.'
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /books/1

@@ -3,7 +3,7 @@ class UrlsController < ApplicationController
 
   # GET /urls
   def index
-    @urls = Url.all
+    @urls = Url.where(_type: params[:type]).page(params[:page]).per(10)
   end
 
   # GET /urls/1
