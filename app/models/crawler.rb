@@ -45,17 +45,17 @@ class Crawler
   end
 
   def crawl!(book_url)
+    image_regex = /http.*?([^\/]*\.jpg)$/i
     book = Book.find_or_initialize_by(book_url_id: book_url.id)
     page = @agent.get(book_url.href)
     book.name = page.at("//h1[@class='entry-title']").text
     page.at("//div[@class='entry entry-content']//a[starts-with(@rel, 'attachment wp-att')]/img").tap do |image|
       if image
-        book.image = image.get_attribute(:src)
+        image_src = image.get_attribute(:src)
       else
-        book.image = page.image_with(
-          src: /wp-content\/uploads\/\w+\/\d+\.jpg$/i
-        ).try(:src)
+        image_src = page.image_with(src: image_regex).try(:src)
       end
+      book.image = image_src.gsub(image_regex, '\1') if image_src
     end
     book.timeStamp = page.at("//div[@class='entry-meta']//span[@class='meta-date']")
       .text.gsub(/on\s+/, "")
