@@ -68,6 +68,15 @@ class Crawler
     if author_marker
       book.author = content.delete_at(author_marker).gsub(/by\s+/, '')
     end
+    if book.author.blank?
+      maker = page.at("//div[@class='entry entry-content']/h2")
+      while maker.next_sibling.content.strip.blank?
+        maker = maker.next_sibling
+      end
+      if maker.next_sibling.name == "ul"
+        book.author = maker.next_sibling.content.strip
+      end
+    end
     book.content = content.delete_if(&:blank?).join("\n")
     book.save
   rescue => e
