@@ -1,4 +1,5 @@
 class BookUrl < Url
+  CRAWLER = Crawler.new
   attr_accessor :crawler
   has_one :book
 
@@ -7,6 +8,6 @@ class BookUrl < Url
   end
 
   def scrap_content!
-    crawler.crawl!(self)
+    CRAWLER.crawl!(self)
   end
 end

@@ -64,9 +64,9 @@ class Crawler
     delim_index = content.index { |c| c =~ /.*?download.*?/ }
     content = content.take(delim_index - 1) if delim_index
     book.description = content.find { |text| text.length > 200 }
-    author_marker = content.index { |c| c =~ /by\s+/ }
-    if author_marker
-      book.author = content.delete_at(author_marker).gsub(/by\s+/, '')
+    author_marker = content.index { |c| c =~ /^by\s{0,}/i }
+    if author_marker && author_marker <= 1
+      book.author = content.delete_at(author_marker).gsub(/^by\s{0,}/i, '')
     end
     if book.author.blank?
       maker = page.at("//div[@class='entry entry-content']/h2")
