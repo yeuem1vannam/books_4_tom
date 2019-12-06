@@ -6,7 +6,7 @@ gem 'rails', '4.1.6'
 gem 'bson_ext'
 gem 'mongoid'
 gem "haml-rails"
-gem 'puma'
+gem 'puma', '>= 3.12.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
