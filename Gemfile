@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 gem 'bson_ext'
-gem 'mongoid'
+gem 'mongoid', '>= 4.0.0'
 gem "haml-rails"
 gem 'puma'
 # Use SCSS for stylesheets
@@ -23,7 +23,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'mechanize'
-gem 'delayed_job_mongoid'
+gem 'delayed_job_mongoid', '>= 2.1.0'
 gem 'kaminari'
 gem 'pry', group: [:development]
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
