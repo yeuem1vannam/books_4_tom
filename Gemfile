@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '6.0.3.5'
 gem 'bson_ext'
 gem 'mongoid'
 gem "haml-rails"
@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", ">= 3.2.2"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
